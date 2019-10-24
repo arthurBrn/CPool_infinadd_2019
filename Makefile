@@ -15,7 +15,7 @@ RM	=	rm -f
 
 INCLUDE	=	-I include
 
-CFLAGS	=	$(INCLUDE) #-W -Wall -Wshadow -Wextra -Werror
+CFLAGS	=	-W -Wall -Wshadow -Wextra -Werror -g $(INCLUDE)
 
 LIB_DIR	=	lib/my
 
