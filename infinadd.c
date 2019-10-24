@@ -74,9 +74,7 @@ char *add(char **argv)
 {
     // We store our longest and our shortest string
     char *long_str = greatest_string(argv);
-    char *small_str = smallest_string(argv);
     int long_str_length = my_strlen(long_str);
-    int small_str_length = my_strlen(small_str);
     int retain = 0;
     int res = 0;
     // There we store the length of the longest string
@@ -85,9 +83,11 @@ char *add(char **argv)
     char *res_str = malloc_it(argv);
     // We place our shortest string, now the size of the longet one, with zero before the regular digits, in a var
     char *concat_str = concatenate_zeros(smallest_string(argv), str_length);
+    char *small_str = concat_str;
+    int small_str_length = my_strlen(small_str);
 
     // While the longest string is different to 0
-    while (str_length > 0) {
+    while (str_length > -1) {
         if (retain > 0) // If there is a retenu
             long_str[long_str_length] = (((long_str[long_str_length] - 48) + 1) + 48); // We had plus one at the next digit
         res = (small_str[small_str_length] - 48) + (long_str[long_str_length] - 48); // We store the compute of both digit inside an int var
@@ -103,6 +103,7 @@ char *add(char **argv)
         }
         // We place our computed value (turned into a string) at the right index of our string
         res_str[str_length] = (res + 48);
+        printf("%s", res_str);
         str_length--;
         small_str_length--;
         long_str_length--;
